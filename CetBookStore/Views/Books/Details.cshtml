@@ -79,6 +79,10 @@
     </dl>
 </div>
 
+<form asp-controller="Cart" asp-action="AddToCart" method="post">
+    <input type="hidden" name="bookId" value="@Model.Id" />
+    <button type="submit" class="btn btn-primary">Add to Cart</button>
+</form>
 
 
 

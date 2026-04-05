@@ -51,9 +51,10 @@
                 </td>
                
                 <td>
-                    <a asp-action="" asp-route-id="@item.Id">Buy Now</a> |
-                    <a asp-action="" asp-route-id="@item.Id">Add to Basket</a> 
-                    
+                    <form asp-controller="Cart" asp-action="AddToCart" method="post" class="d-inline">
+                        <input type="hidden" name="bookId" value="@item.Id" />
+                        <button type="submit" class="btn btn-sm btn-primary">Add to Cart</button>
+                    </form>
                 </td>
             </tr>
         }

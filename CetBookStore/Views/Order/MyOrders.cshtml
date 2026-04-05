@@ -1,0 +1,43 @@
+@model List<CetBookStore.Models.Order>
+
+@{
+    ViewData["Title"] = "My Orders";
+}
+
+<h1>My Orders</h1>
+<hr />
+
+
+@foreach (var order in Model)
+{
+    <h4>Order #@order.Id  -  @order.OrderDate  </h4>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Book</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in order.OrderItems)
+            {
+                <tr>
+                    <td>
+                        <a asp-controller="Books" asp-action="Details" asp-route-id="@item.BookId"> @Html.DisplayFor(modelItem => item.Book.Title)</a>
+                    </td>
+                    <td>@item.Price</td>
+                    <td>@item.Quantity</td>
+                    <td>@(item.Price * item.Quantity)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <p><strong>Total: @order.TotalPrice</strong></p>
+    <hr />
+}
+
+
